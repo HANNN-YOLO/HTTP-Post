@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 
@@ -10,10 +9,23 @@ class HttpProvider with ChangeNotifier {
 
   int get alldata => _data.length;
 
-  sambungAPI(String name, String job) async {
+  Future<void> sambungapi(String name, String job) async {
     var url = Uri.parse("https://reqres.in/api/users");
 
-    var hasilakhir = await http.post(url, body: {"name": name, "job": job});
+    var hasilakhir = await http.post(
+      url,
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': 'reqres-free-v1',
+      },
+      body: jsonEncode({"name": name, "job": job}),
+    );
+
+    if (hasilakhir.statusCode == 201) {
+      print("Berhasil : ${hasilakhir.body}");
+    } else {
+      print("Kesalahan: ${hasilakhir.body}");
+    }
 
     _data = json.decode(hasilakhir.body);
     notifyListeners();

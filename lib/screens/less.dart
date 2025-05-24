@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+// import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../models/http_providers.dart';
@@ -29,73 +29,68 @@ class Less extends StatelessWidget {
         title: Text("Post Provider", style: TextStyle(color: Colors.white)),
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          // crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            FittedBox(
-              alignment: Alignment.center,
-              child: Consumer<HttpProvider>(
-                builder:
-                    (context, value, child) => Text(
+        child: Consumer<HttpProvider>(
+          builder:
+              (context, value, child) => Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                // crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  FittedBox(
+                    alignment: Alignment.center,
+                    child: Text(
                       (value.data["id"] == null)
                           ? "ID : BELUM ADA DATA"
                           : "ID : ${value.data["id"]}",
                       style: TextStyle(fontSize: 20),
                     ),
-              ),
-            ),
-            SizedBox(height: 20),
-            Container(
-              child: Consumer<HttpProvider>(
-                builder:
-                    (context, value, child) => Text(
+                  ),
+                  SizedBox(height: 20),
+                  Container(
+                    child: Text(
                       (value.data["name"] == null)
                           ? "NAMA : BELUM ADA DATA"
                           : "NAMA : ${value.data["name"]}",
                       style: TextStyle(fontSize: 20),
                     ),
-              ),
-            ),
-            SizedBox(height: 20),
-            FittedBox(
-              child: Consumer<HttpProvider>(
-                builder:
-                    (context, value, child) => Text(
+                  ),
+                  SizedBox(height: 20),
+                  FittedBox(
+                    child: Text(
                       (value.data["job"] == null)
                           ? "JOB : TIDAK ADA DATA"
                           : "JOB : ${value.data["job"]}",
                       style: TextStyle(fontSize: 20),
                     ),
-              ),
-            ),
-            SizedBox(height: 20),
-            Container(
-              child: Consumer<HttpProvider>(
-                builder:
-                    (context, value, child) => Text(
+                  ),
+                  SizedBox(height: 20),
+                  Container(
+                    child: Text(
                       (value.data["createdAt"] == null)
                           ? "CREATED AT : TIDAK ADA DATA"
                           : "CREATED AT : ${value.data["createdAt"]}",
                       style: TextStyle(fontSize: 20),
                     ),
+                  ),
+                  SizedBox(height: 100),
+                  Container(
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.cyan,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.zero,
+                        ),
+                      ),
+                      onPressed: () {
+                        mydata.sambungapi("HANNN", "Bernapa");
+                      },
+                      child: Text(
+                        "POST DATA",
+                        style: TextStyle(color: Colors.white, fontSize: 20),
+                      ),
+                    ),
+                  ),
+                ],
               ),
-            ),
-            SizedBox(height: 100),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.cyan,
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.zero),
-              ),
-              onPressed: () {
-                mydata.sambungAPI("HANNN", "Enjoy");
-              },
-              child: Text(
-                "POST DATA",
-                style: TextStyle(color: Colors.white, fontSize: 20),
-              ),
-            ),
-          ],
         ),
       ),
     );

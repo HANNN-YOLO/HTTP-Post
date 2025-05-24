@@ -9,12 +9,14 @@ class Full extends StatefulWidget {
 }
 
 class _LessState extends State<Full> {
-  static HttpStatefull data = HttpStatefull(
-    id: " ",
-    name: " ",
-    job: " ",
-    createdAt: " ",
-  );
+  // static HttpStatefull data = HttpStatefull(
+  //   id: " ",
+  //   name: " ",
+  //   job: " ",
+  //   createdAt: " ",
+  // );
+
+  HttpStatefull? data;
 
   @override
   Widget build(BuildContext context) {
@@ -44,35 +46,63 @@ class _LessState extends State<Full> {
           children: [
             FittedBox(
               alignment: Alignment.center,
-              child: Text(
-                (data.id == null) ? "ID : BELUM ADA DATA" : "ID : ${data.id}",
+              child:
+              // Text(
+              //   (data.id == null) ? "ID : BELUM ADA DATA" : "ID : ${data.id}",
+              //   style: TextStyle(fontSize: 20),
+              // ),
+              Text(
+                data == null || data!.id.isEmpty
+                    ? "ID : BELUM ADA DATA"
+                    : "ID : ${data!.id}",
                 style: TextStyle(fontSize: 20),
               ),
             ),
             SizedBox(height: 20),
             Container(
-              child: Text(
-                (data.name == null)
+              child:
+              // Text(
+              //   (data.name == null)
+              //       ? "NAMA : BELUM ADA DATA"
+              //       : "NAMA : ${data.name}",
+              //   style: TextStyle(fontSize: 20),
+              // ),
+              Text(
+                data == null || data!.name.isEmpty
                     ? "NAMA : BELUM ADA DATA"
-                    : "NAMA : ${data.name}",
+                    : "NAMA : ${data!.name}",
                 style: TextStyle(fontSize: 20),
               ),
             ),
             SizedBox(height: 20),
             FittedBox(
-              child: Text(
-                (data.job == null)
+              child:
+              // Text(
+              //   (data.job == null)
+              //       ? "JOB : TIDAK ADA DATA"
+              //       : "JOB: ${data.job}",
+              //   style: TextStyle(fontSize: 20),
+              // ),
+              Text(
+                data == null || data!.job.isEmpty
                     ? "JOB : TIDAK ADA DATA"
-                    : "JOB: ${data.job}",
+                    : "JOB : ${data!.job}",
                 style: TextStyle(fontSize: 20),
               ),
             ),
             SizedBox(height: 20),
             Container(
-              child: Text(
-                (data.createdAt == null)
+              child:
+              // Text(
+              //   (data.createdAt == null)
+              //       ? "CREATED AT : TIDAK ADA DATA"
+              //       : "CREATE AT: ${data.createdAt}",
+              //   style: TextStyle(fontSize: 20),
+              // ),
+              Text(
+                data == null || data!.createdAt.isEmpty
                     ? "CREATED AT : TIDAK ADA DATA"
-                    : "CREATE AT: ${data.createdAt}",
+                    : "CREATED AT : ${data!.createdAt}",
                 style: TextStyle(fontSize: 20),
               ),
             ),
@@ -83,13 +113,13 @@ class _LessState extends State<Full> {
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.zero),
               ),
               onPressed: () {
-                HttpStatefull.Connectfull("HANNN", "Solo Player ").then((
+                HttpStatefull.Connectfull("Manusia", "Solo Player ").then((
                   value,
                 ) {
+                  print(value.id);
                   setState(() {
                     data = value;
                   });
-                  print(value.job);
                 });
               },
               child: Text(

@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+// import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import './models/http_providers.dart';
 import 'package:provider/provider.dart';
@@ -18,6 +18,7 @@ class Postapp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         home: Less(),
+        // Full(),
         routes: {
           Less.nameroute: (ctx) => Less(),
           Full.nameroute: (ctx) => Full(),
