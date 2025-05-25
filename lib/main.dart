@@ -24,16 +24,6 @@ class Postapp extends StatelessWidget {
           Full.nameroute: (ctx) => Full(),
         },
       ),
-
-      // Versi Statefull
-      // child: MaterialApp(
-      //   debugShowCheckedModeBanner: false,
-      //   home: Full(),
-      //   routes: {
-      //     Less.nameroute: (ctx) => Less(),
-      //     Full.nameroute: (ctx) => Full(),
-      //   },
-      // ),
     );
   }
 }
