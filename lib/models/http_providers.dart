@@ -28,6 +28,7 @@ class HttpProvider with ChangeNotifier {
     }
 
     _data = json.decode(hasilakhir.body);
+    print("Respon : $data");
     notifyListeners();
   }
 }

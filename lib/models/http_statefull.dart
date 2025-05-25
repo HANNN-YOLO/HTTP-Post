@@ -3,7 +3,8 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class HttpStatefull {
-  String id, name, job, createdAt;
+  int id;
+  String name, job, createdAt;
 
   HttpStatefull({
     required this.id,
@@ -35,15 +36,8 @@ class HttpStatefull {
     var data = json.decode(responstatefull.body);
     print("RESPONSE BODY: $data");
 
-    // return HttpStatefull(
-    //   id: data["id"] ?? "",
-    //   name: data["name"] ?? "",
-    //   job: data["job"] ?? "",
-    //   createdAt: data["createdAt"] ?? "",
-    // );
-
     return HttpStatefull(
-      id: data["id"] ?? "",
+      id: int.parse(data['id'].toString()) ?? 0,
       name: name,
       job: job,
       createdAt: data["createdAt"] ?? "",
